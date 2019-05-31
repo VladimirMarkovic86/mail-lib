@@ -1,4 +1,4 @@
-(defproject org.clojars.vladimirmarkovic86/mail-lib "0.1.0"
+(defproject org.clojars.vladimirmarkovic86/mail-lib "0.1.1"
   :description "Mail library"
   :url "http://github.com/VladimirMarkovic86/mail-lib"
   :license {:name "Eclipse Public License"

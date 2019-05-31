@@ -7,7 +7,9 @@
    password
    to
    subject
-   content]
+   content
+   & [is-html
+      from-contact-name]]
   (let [username from
         props (java.util.Properties.)]
     (.put
@@ -34,7 +36,14 @@
                     mail-authenticator)]
       (try
         (let [message (javax.mail.internet.MimeMessage.
-                        session)]
+                        session)
+              from (if (and from-contact-name
+                            (string?
+                              from-contact-name))
+                     (str
+                       from-contact-name
+                       " <" from ">")
+                     from)]
           (.setFrom
             message
             (javax.mail.internet.InternetAddress.
@@ -47,9 +56,17 @@
           (.setSubject
             message
             subject)
-          (.setText
-            message
-            content)
+          (if is-html
+            (do
+              (.setContent
+                message
+                content
+                "text/html; charset=utf-8")
+              (.saveChanges
+                message))
+            (.setText
+              message
+              content))
           (javax.mail.Transport/send
             message)
           true)
