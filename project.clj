@@ -1,4 +1,4 @@
-(defproject org.clojars.vladimirmarkovic86/mail-lib "0.1.1"
+(defproject org.clojars.vladimirmarkovic86/mail-lib "0.1.2"
   :description "Mail library"
   :url "http://github.com/VladimirMarkovic86/mail-lib"
   :license {:name "Eclipse Public License"
@@ -11,5 +11,8 @@
   
   :source-paths ["src/clj"]
   :test-paths ["test/clj"]
-  :java-source-paths ["src/java"])
+  :java-source-paths ["src/java"]
+  
+  :jar-exclusions [#"README.md$"
+                   #"LICENSE$"])
 
